@@ -52,7 +52,7 @@ while quit1:
     program = ''                                        # Menu główne
     while program != "k" or program != "e" or program != "b" or program != "r" or program != "o" or program != "r" or program != "s":
         program = input("MENU GŁÓWNE\nZ jakiej funkcji chcesz skorzystać?\nKalkulator oprocentowania: (k)\nKalkulator Brutto - Netto ("
-            "b)\nOferta kont (r)\nWyjście z systemu bankowości: (e)\nOperacje na rachunku: (o)\n")
+            "b)\nOferta kont (r)\nWyjście z systemu bankowości: (e)\nOperacje na rachunku: (o)\nStan rachunku (s)\n")
         if program == "b":                              # Kalkulator brutto netto
             podaj = ''
             while podaj != "b" or podaj != "n" or podaj != "e" or podaj != "r":
@@ -114,7 +114,8 @@ while quit1:
                 elif operacje_na_rachunku == "r":
                     break
         elif program == "s":
-            user.stan_konta()
+            print(user.stan_konta())
+
         elif program == "e":
             print("Dziękujemy za skorzystanie z naszego systemu bankowości\n")
             sys.exit(0)
