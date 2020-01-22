@@ -60,6 +60,9 @@ class Konto:
     def wplyw(self, wplyw):
         self.stan += wplyw
 
+    def wyplyw(self, wyplyw):
+        self.stan -= wyplyw
+
     def stats(self):
         return self.imie_nazwisko, self.stan, self.status
 

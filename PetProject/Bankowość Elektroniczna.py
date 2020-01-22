@@ -50,10 +50,10 @@ while quit1:
         sys.exit()
 
     program = ''                                        # Menu główne
-    while program != "k" or program != "e" or program != "b" or program != "r":
+    while program != "k" or program != "e" or program != "b" or program != "r" or program != "o" or program != "r" or program != "s":
         program = input("MENU GŁÓWNE\nZ jakiej funkcji chcesz skorzystać?\nKalkulator oprocentowania: (k)\nKalkulator Brutto - Netto ("
-            "b)\nOferta kont (r)\nWyjście z systemu bankowości: (e)\n")
-        if program == "b":
+            "b)\nOferta kont (r)\nWyjście z systemu bankowości: (e)\nOperacje na rachunku: (o)\n")
+        if program == "b":                              # Kalkulator brutto netto
             podaj = ''
             while podaj != "b" or podaj != "n" or podaj != "e" or podaj != "r":
                 podaj = input("KALKULATOR BRUTTO-NETTO\nCo chcesz obliczyć?\nBrutto (b)\nnetto (n)\nPowrót do menu (r)\nZakończ program (e)\n")
@@ -68,8 +68,8 @@ while quit1:
                     print("Dziękujemy za skorzystanie z naszego systemu bankowości\n")
                     sys.exit(0)
 
-        elif program == "k":                                              # Kalkulator oprocentowania
-            print("KALKULATOR ORPOCENTOWANIA")
+        elif program == "k":                             # Kalkulator oprocentowania
+            print("KALKULATOR OPROCENTOWANIA")
             stan_p = float(input("podaj stan poczatkowy konta\n"))
             procent = float(input("podaj oprocentowanie\n"))
             okres = float(input("ile lat będziez trzymał środki\n"))
@@ -80,7 +80,7 @@ while quit1:
                 pytanie = input("Co jaki okres występuje kapitalizacja?\n Dziennie (d), miesiąc (m), rok (r)\n")
             kalkulator_oprocentowania(stan_p, procent, okres, pytanie)
 
-        elif program == "r":                                                # ofeta kont
+        elif program == "r":                              # ofeta kont
             typ_konta = ''
             print("Zapraszamy do skoszystania z baszej bogatej oferty.\nDzięki dostoswanej do każdego oferty, "
                   "napewno znajdziesz coś dla siebie.\n")
@@ -93,7 +93,28 @@ while quit1:
                     break
                 elif podaj == "r":
                     break
-
+        elif program == "o":                            # Operacje na rachunku
+            operacje_na_rachunku = ''
+            while operacje_na_rachunku != "+" or operacje_na_rachunku != "-" or operacje_na_rachunku != "r":
+                operacje_na_rachunku = input(
+                    "Jaką operację chcesz wykonać?\nWpłata (+)\nWypłata (-)\nPowrót do menu głównego (r)\n")
+                if operacje_na_rachunku == "+":
+                    add_money = float(input("Jaką kwotę chcesz wpłacić na konto?\n"))
+                    user.wplyw(add_money)
+                    print(f"Na twoim koncie po operacji znajduje się {user.stan_konta()}")
+                    break
+                elif operacje_na_rachunku == "-":
+                    take_money = float(input("Jaką kwotę chcesz wypłacić z konta?\n"))
+                    if user.stan < take_money:
+                        print("Za mało dostępnych środków na rachunku")
+                        break
+                    else:
+                        user.wyplyw(take_money)
+                        print(f"Na twoim koncie po operacji znajduje się {user.stan_konta()}")
+                elif operacje_na_rachunku == "r":
+                    break
+        elif program == "s":
+            user.stan_konta()
         elif program == "e":
             print("Dziękujemy za skorzystanie z naszego systemu bankowości\n")
             sys.exit(0)
