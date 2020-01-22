@@ -80,7 +80,7 @@ while quit1:
                 pytanie = input("Co jaki okres występuje kapitalizacja?\n Dziennie (d), miesiąc (m), rok (r)\n")
             kalkulator_oprocentowania(stan_p, procent, okres, pytanie)
 
-        elif program == "r":                            # ofeta kont
+        elif program == "r":                                                # ofeta kont
             typ_konta = ''
             print("Zapraszamy do skoszystania z baszej bogatej oferty.\nDzięki dostoswanej do każdego oferty, "
                   "napewno znajdziesz coś dla siebie.\n")
