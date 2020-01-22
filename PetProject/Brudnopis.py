@@ -18,4 +18,9 @@ user = Konto(imie_nazwisko, 0, "otwarte")
 #
 #---------------------------------------
 
-print(user)
+print(user.stan_konta())
+
+print(user.description())
+
+
+
