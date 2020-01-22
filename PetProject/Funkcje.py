@@ -63,6 +63,10 @@ class Konto:
     def wyplyw(self, wyplyw):
         self.stan -= wyplyw
 
+    def zamknij_konto(self, status):
+        self.status = status
+        return self.status == "Zamkniętę"
+
     def stats(self):
         return self.imie_nazwisko, self.stan, self.status
 
