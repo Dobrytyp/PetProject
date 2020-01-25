@@ -107,6 +107,7 @@ while quit1:
                     "Jaką operację chcesz wykonać?\nWpłata (+)\nWypłata (-)\nPowrót do menu głównego (r)\n")
                 if not its_open:
                     print("Najpierw musisz mieć otwarte konto")
+                    break
                 elif operacje_na_rachunku == "+":
                     add_money = float(input("Jaką kwotę chcesz wpłacić na konto?\n"))
                     user.wplyw(add_money)
