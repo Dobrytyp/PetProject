@@ -1,3 +1,3 @@
-User: Szymon Pisarski
-User: Twoja Stara
-User: Tomasz Muchalski
+User: "Szymon Pisarski"
+User: "Twoja Stara"
+User: "Tomasz Muchalski"
