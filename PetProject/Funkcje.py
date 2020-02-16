@@ -26,6 +26,7 @@ def kalkulator_oprocentowania(stan_p, procent, okres, pytanie):
         wynik = stan_p * ((1 + (procent_d / 100)) ** dzień)
         return print("Twój kapitał po wskaznym okresie, wyniesie:", round(wynik, 2), "\n")
 
+
 def petla(password):
     totatlcounter = ""
     lower = "aąbcćdeęfghijklłmnńopqrstóuwxyzźż"
@@ -44,16 +45,14 @@ def petla(password):
     return totatlcounter
 
 
-#========================= Przydatne funkcje ==========================
+# ========================= Przydatne funkcje ==========================
 
 def decimalToBinary(n):
     binary = int(bin(n).replace("0b", ""))
     return binary
 
 
-
-
-#======================== Klasa Konto ==================================
+# ======================== Klasa Konto ==================================
 
 class Konto:
     def __init__(self, imie_nazwisko, stan, status):
@@ -81,4 +80,23 @@ class Konto:
         return self.imie_nazwisko, self.stan, self.status
 
 
+# ====================== Klasa Lokata =================================
 
+class Lokata:
+    def __init__(self, imie_nazwisko, stan, status, okres, procent):
+        self.imie_nazwisko = imie_nazwisko
+        self.stan = stan
+        self.status = status
+        self.okres = okres
+        self.procent = procent
+
+    def description(self):
+        return f"Witaj {self.imie_nazwisko}. Twoja lokata jest {self.status} znajduje się na niej {self.stan} złotych \nBędzie trwała {self.okres} miesiąc. \nOprocentowanie wynosi {self.procent}%\n"
+
+    def open_depo(self, stan, okres, procent):
+        self.stan = stan
+        self.okres = okres
+        self.procent = procent
+
+    def stan_lokaty(self):
+        return self.stan

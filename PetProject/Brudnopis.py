@@ -14,94 +14,13 @@
 # #---------------------------------------
 #
 import sys
-def netto_brutto(kwota):
-    wynagrodzenie = kwota * 140.26 / 100
-    return print("Twoja kwota brutto to:", round(wynagrodzenie, 2), "\n")
+from Funkcje import netto_brutto
+from Funkcje import brutto_netto
+from Funkcje import Konto
+from Funkcje import petla
+from Funkcje import kalkulator_oprocentowania
+from Funkcje import Lokata
 
-
-def brutto_netto(kwota):
-    wynagrodzenie = kwota * 71.3 / 100
-    return print("Twoja kwota netto to:", round(wynagrodzenie, 2), "\n")
-
-
-def kalkulator_oprocentowania(stan_p, procent, okres, pytanie):
-    miesiąc = okres * 12
-    procent_m = procent / 12
-
-    dzień = okres * 365
-    procent_d = procent / 365
-    if pytanie == "m":
-        wynik = stan_p * ((1 + (procent_m / 100)) ** miesiąc)
-        return print("Twój kapitał po wskaznym okresie, wyniesie:", round(wynik, 2), "\n")
-
-    elif pytanie == "r":
-        wynik = stan_p * ((1 + (procent / 100)) ** okres)
-        return print("Twój kapitał po wskaznym okresie, wyniesie:", round(wynik, 2), "\n")
-
-    elif pytanie == "d":
-        wynik = stan_p * ((1 + (procent_d / 100)) ** dzień)
-        return print("Twój kapitał po wskaznym okresie, wyniesie:", round(wynik, 2), "\n")
-
-
-def petla(password):
-    totatlcounter = ""
-    lower = "aąbcćdeęfghijklłmnńopqrstóuwxyzźż"
-    upper = lower.upper()
-    digits = "01234567890"
-    specials = "!@$%^&*"
-    for i in password:
-        if i in lower:
-            totatlcounter += "l"
-        elif i in upper:
-            totatlcounter += "u"
-        elif i in digits:
-            totatlcounter += "d"
-        elif i in specials:
-            totatlcounter += "s"
-    return totatlcounter
-
-
-class Konto:
-    def __init__(self, imie_nazwisko, stan, status):
-        self.imie_nazwisko = imie_nazwisko
-        self.stan = stan
-        self.status = status
-
-    def description(self):
-        return f"Witaj {self.imie_nazwisko}. Twoje konto jest {self.status} znajduje się na nim {self.stan} złotych"
-
-    def stan_konta(self):
-        return self.stan
-
-    def wplyw(self, wplyw):
-        self.stan += wplyw
-
-    def wyplyw(self, wyplyw):
-        self.stan -= wyplyw
-
-    def zamknij_konto(self, status):
-        self.status = status
-        return self.status == "Zamkniętę"
-
-
-    def stats(self):
-        return self.imie_nazwisko, self.stan, self.status
-
-class Lokata:
-    def __init__(self, imie_nazwisko, stan, status, okres, procent):
-        self.imie_nazwisko = imie_nazwisko
-        self.stan = stan
-        self.status = status
-        self.okres = okres
-        self.procent = procent
-
-    def description(self):
-        return f"Witaj {self.imie_nazwisko}. Twoja lokata jest {self.status} znajduje się na niej {self.stan} złotych \n Będzie trwała {self.okres} miesiąc. \nOprocentowanie wynosi {self.procent}%\n"
-
-    def open_depo(self, stan, okres, procent):
-        self.stan = stan
-        self.okres = okres
-        self.procent = procent
 
 imie_nazwisko = input("Podaj imię i nazwisko\n")
 
@@ -110,7 +29,6 @@ password = input("Witamy w systemie bankowości elektronicznej.\n \nWpisz nowe h
                  "specjalny\n")
 petla(password)
 totatlcounter = petla(password)
-
 
 quit1 = True
 
@@ -164,7 +82,7 @@ while quit1:
                     "Zakończ program (e)\n")
                 if podaj == "r":
                     break
-                kwota = float(input("Podaj wysokść wynagrrodzenia\n"))
+                kwota = float(input("Podaj wysokść wynagrodzenia\n"))
                 if podaj == "b":
                     netto_brutto(kwota)
                 elif podaj == "n":
@@ -224,13 +142,14 @@ while quit1:
                 elif operacje_na_rachunku == "r":
                     break
 
-        elif program == "s":    # Stan rachunku
+        elif program == "s":  # Stan rachunku
             if not its_open:
                 print("Najpierw musisz mieć towarte konto\n")
             else:
                 print(user.stan_konta())
+                print(user_depo.stan_lokaty())
 
-        elif program == "d":        # załóż lokatę
+        elif program == "d":  # załóż lokatę
             if not its_open:
                 print("Najpierw musisz mieć towarte konto\n")
             else:
@@ -239,14 +158,15 @@ while quit1:
                       "napewno znajdziesz coś dla siebie.\n")
                 kwota_lokaty = float(input("Ile chcesz wpłacić na lokatę?\n"))
                 if kwota_lokaty > user.stan_konta():
-                    print("Masz za mało środków\n")   # <----- TU wywala do poziomu logowania
+                    print("Masz za mało środków\n")  # <----- TU wywala do poziomu logowania
 
                 else:
                     add_money = ''
                     while add_money != "m" or typ_depo != "t" or typ_depo != "s" or typ_depo != "r" or typ_depo != "e":
-                        add_money = input("Na jaki okres chcesz otowrzyć lokatę? \nJedno Miesięczna (m) \nTrzy miesięczna (t) \nSześciomiesięczną (s) \nRoczną (r) \nPowrót do menu (e)\n")
+                        add_money = input(
+                            "Na jaki okres chcesz otowrzyć lokatę? \nJedno Miesięczna (m) \nTrzy miesięczna (t) \nSześciomiesięczną (s) \nRoczną (r) \nPowrót do menu (e)\n")
                         if add_money == "m":
-                            user_depo = Lokata(imie_nazwisko, kwota_lokaty, "otwarte", 1, 1.5,)
+                            user_depo = Lokata(imie_nazwisko, kwota_lokaty, "otwarte", 1, 1.5, )
                             its_open = True
                             print(user_depo.description())
                             user.wyplyw(kwota_lokaty)
