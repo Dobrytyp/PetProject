@@ -26,7 +26,6 @@ def kalkulator_oprocentowania(stan_p, procent, okres, pytanie):
         wynik = stan_p * ((1 + (procent_d / 100)) ** dzień)
         return print("Twój kapitał po wskaznym okresie, wyniesie:", round(wynik, 2), "\n")
 
-
 def petla(password):
     totatlcounter = ""
     lower = "aąbcćdeęfghijklłmnńopqrstóuwxyzźż"
@@ -44,6 +43,17 @@ def petla(password):
             totatlcounter += "s"
     return totatlcounter
 
+
+#========================= Przydatne funkcje ==========================
+
+def decimalToBinary(n):
+    binary = int(bin(n).replace("0b", ""))
+    return binary
+
+
+
+
+#======================== Klasa Konto ==================================
 
 class Konto:
     def __init__(self, imie_nazwisko, stan, status):
