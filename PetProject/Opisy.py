@@ -26,3 +26,11 @@ brutto_netto_calc_text = "KALKULATOR BRUTTO-NETTO\nCo chcesz obliczyć?\nBrutto 
                          "Powrót do menu (r)\nZakończ menu_input (e)\n"
 
 salary_text = "Podaj wysokść wynagrodzenia\n"
+
+interest_calc_text = "Kalkulator Oprocentowania"
+account_1_text = "podaj stan poczatkowy konta\n"
+account_2_text = "podaj oprocentowanie\n"
+account_how_lon_text = "ile lat będziez trzymał środki\n"
+ask_capitalization_text = "Co jaki okres występuje kapitalizacja?\n Dziennie (d), miesiąc (m), rok (r)\n"
+choose_how_long_text = "Co jaki okres występuje kapitalizacja?\n Dziennie (d), miesiąc (m), rok (r)\n"
+how_much_after_text = "Twój kapitał po wskaznym okresie, wyniesie:"
