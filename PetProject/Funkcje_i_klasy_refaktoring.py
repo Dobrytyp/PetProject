@@ -4,7 +4,7 @@ import sys
 from Funkcje import netto_brutto, brutto_netto
 
 
-def petla(password):                                # password checksum counter
+def petla(password):  # password checksum counter
     total_counter = ""
     lower = "aąbcćdeęfghijklłmnńopqrstóuwxyzźż"
     upper = lower.upper()
@@ -22,7 +22,7 @@ def petla(password):                                # password checksum counter
     return total_counter
 
 
-def set_password(password, total_counter):          # checksum password control
+def set_password(password, total_counter):  # checksum password control
     if password == "e":
         print(Opisy.exit_text)
         sys.exit(0)
@@ -35,7 +35,7 @@ def set_password(password, total_counter):          # checksum password control
     print(Opisy.correct_password_text)
 
 
-def logon(logon_ask):                               # Ask about entrance
+def logon(logon_ask):  # Ask about entrance
     while logon_ask != "t" or logon_ask != "n":
         logon_ask = input(Opisy.confirm_logon_text)
         if logon_ask == "t" or logon_ask == "n":
@@ -46,7 +46,7 @@ def logon(logon_ask):                               # Ask about entrance
                 break
 
 
-def confirm_password(password):                     # Confirm your password
+def confirm_password(password):  # Confirm your password
     while True:
         ownerpassword = input(Opisy.confirm_password)
         if ownerpassword == "e":
@@ -63,26 +63,42 @@ def menu(menu_input):
     while menu_input != "e" or menu_input != "o" or menu_input != "r" or menu_input != "s" \
             or menu_input != "d" or menu_input != "a":
         menu_input = input(Opisy.menu_input_text)
-        if menu_input == "a":                       # add on menu
+        if menu_input == "a":  # add on menu
             add_on_input = ''
             add_on(add_on_input)
-        elif menu_input == "e":                     # exit
+        elif menu_input == "e":  # exit
             print(Opisy.exit_text)
             sys.exit(0)
+        elif menu_input == "r":  # add on menu
+            accounts_input = ''
+            open_account(accounts_input)
+
+
+def open_account(accounts_input):
+    while accounts_input != 'k' or accounts_input != 'e' or accounts_input != 'w' or accounts_input != 'r':
+        podaj = input("Jaki typ konta chcesz otworzyć?\n Rachunek Bierzący (k)\n Konto oszczędnościowe "
+                      "(e)\n Konto Walutowe (w)\n Powrót do menu (r)\n\n")
+        # if podaj == "k":
+        #     user = Konto(imie_nazwisko, 0, "otwarte")
+        #     its_open = True
+        #     print(user.description())
+        #     break
+        # elif podaj == "r":
+        #     break
 
 
 def add_on(add_on_input):
     while add_on_input != "b" or add_on_input != "k" or add_on_input != "e" or add_on_input != "r":
         add_on_input = input(Opisy.add_on_text)
-        if add_on_input == "b":                       # brutto netto calculator
+        if add_on_input == "b":  # brutto netto calculator
             ask_brutto_netto = ''
             brutto_netto_calc(ask_brutto_netto)
-        elif add_on_input == "e":                     # return to menu
+        elif add_on_input == "e":  # return to menu
             print(Opisy.exit_text)
             sys.exit(0)
         elif add_on_input == "r":
             break
-        elif add_on_input == "k":                     # exit
+        elif add_on_input == "k":  # exit
             rate_interest_start = 0
             interest_rate(rate_interest_start)
 
@@ -102,7 +118,7 @@ def brutto_netto_calc(ask_brutto_netto):
             sys.exit(0)
 
 
-def interest_rate(rate_interest_start):         # rate interest inputs
+def interest_rate(rate_interest_start):  # rate interest inputs
     print(Opisy.interest_calc_text)
     stan_p = float(input(Opisy.account_1_text))
     procent = float(input(Opisy.account_2_text))
@@ -128,5 +144,3 @@ def interest_rate(rate_interest_start):         # rate interest inputs
     elif pytanie == "d":
         wynik = stan_p * ((1 + (procent_d / 100)) ** dzień)
         return print(Opisy.how_much_after_text, round(wynik, 2), "\n")
-
-
