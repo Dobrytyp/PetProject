@@ -103,15 +103,15 @@ def brutto_netto_calc(ask_brutto_netto):
 
 
 def interest_rate(rate_interest_start):         # rate interest inputs
-    print("KALKULATOR OPROCENTOWANIA")
-    stan_p = float(input("podaj stan poczatkowy konta\n"))
-    procent = float(input("podaj oprocentowanie\n"))
-    okres = float(input("ile lat będziez trzymał środki\n"))
-    pytanie = input("Co jaki okres występuje kapitalizacja?\n Dziennie (d), miesiąc (m), rok (r)\n")
+    print(Opisy.interest_calc_text)
+    stan_p = float(input(Opisy.account_1_text))
+    procent = float(input(Opisy.account_2_text))
+    okres = float(input(Opisy.account_how_lon_text))
+    pytanie = input(Opisy.ask_capitalization_text)
     pytanie = pytanie.lower()
     while not pytanie in ["m", "d", "r"]:
-        print("Wybierz zdefiniowaną odpowedź: d - dzień, m - miesiąc, r - rok")
-        pytanie = input("Co jaki okres występuje kapitalizacja?\n Dziennie (d), miesiąc (m), rok (r)\n")
+        print(Opisy.choose_how_long_text)
+        pytanie = input(Opisy.choose_how_long_text)
     miesiąc = okres * 12
     procent_m = procent / 12
 
@@ -119,14 +119,14 @@ def interest_rate(rate_interest_start):         # rate interest inputs
     procent_d = procent / 365
     if pytanie == "m":
         wynik = stan_p * ((1 + (procent_m / 100)) ** miesiąc)
-        return print("Twój kapitał po wskaznym okresie, wyniesie:", round(wynik, 2), "\n")
+        return print(Opisy.how_much_after_text, round(wynik, 2), "\n")
 
     elif pytanie == "r":
         wynik = stan_p * ((1 + (procent / 100)) ** okres)
-        return print("Twój kapitał po wskaznym okresie, wyniesie:", round(wynik, 2), "\n")
+        return print(Opisy.how_much_after_text, round(wynik, 2), "\n")
 
     elif pytanie == "d":
         wynik = stan_p * ((1 + (procent_d / 100)) ** dzień)
-        return print("Twój kapitał po wskaznym okresie, wyniesie:", round(wynik, 2), "\n")
+        return print(Opisy.how_much_after_text, round(wynik, 2), "\n")
 
 
