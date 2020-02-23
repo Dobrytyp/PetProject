@@ -151,7 +151,7 @@ while quit1:
 
         elif program == "d":  # załóż lokatę
             if not its_open:
-                print("Najpierw musisz mieć towarte konto\n")
+                print("Najpierw musisz mieć otwarte konto\n")
             else:
                 typ_depo = ''
                 print("Zapraszamy do skoszystania z baszej bogatej oferty.\nDzięki dostoswanej do każdego oferty, "

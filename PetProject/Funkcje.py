@@ -1,3 +1,21 @@
+def petla(password):
+    totatlcounter = ""
+    lower = "aąbcćdeęfghijklłmnńopqrstóuwxyzźż"
+    upper = lower.upper()
+    digits = "01234567890"
+    specials = "!@$%^&*"
+    for i in password:
+        if i in lower:
+            totatlcounter += "l"
+        elif i in upper:
+            totatlcounter += "u"
+        elif i in digits:
+            totatlcounter += "d"
+        elif i in specials:
+            totatlcounter += "s"
+    return totatlcounter
+
+
 def netto_brutto(kwota):
     wynagrodzenie = kwota * 140.26 / 100
     return print("Twoja kwota brutto to:", round(wynagrodzenie, 2), "\n")
@@ -26,23 +44,6 @@ def kalkulator_oprocentowania(stan_p, procent, okres, pytanie):
         wynik = stan_p * ((1 + (procent_d / 100)) ** dzień)
         return print("Twój kapitał po wskaznym okresie, wyniesie:", round(wynik, 2), "\n")
 
-
-def petla(password):
-    totatlcounter = ""
-    lower = "aąbcćdeęfghijklłmnńopqrstóuwxyzźż"
-    upper = lower.upper()
-    digits = "01234567890"
-    specials = "!@$%^&*"
-    for i in password:
-        if i in lower:
-            totatlcounter += "l"
-        elif i in upper:
-            totatlcounter += "u"
-        elif i in digits:
-            totatlcounter += "d"
-        elif i in specials:
-            totatlcounter += "s"
-    return totatlcounter
 
 
 # ========================= Przydatne funkcje ==========================
