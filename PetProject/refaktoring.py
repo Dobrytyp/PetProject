@@ -2,11 +2,11 @@ from Funkcje_i_klasy_refaktoring import petla, logon, set_password, confirm_pass
 import Opisy
 
 
-# imie_nazwisko = ''
-# while imie_nazwisko == '':
-#     imie_nazwisko = input(Opisy.name_surname_text)          # user data
-#
-#
+imie_nazwisko = ''
+while imie_nazwisko == '':
+    imie_nazwisko = input(Opisy.name_surname_text)          # user data
+
+
 # password = input(Opisy.logon_text)                          # password data
 #
 #
@@ -22,6 +22,6 @@ import Opisy
 #
 #
 # confirm_password(password)                                  # Confirm your password
-#
+
 
 menu("")                                                    # Main Menu
