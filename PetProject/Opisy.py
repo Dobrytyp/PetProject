@@ -34,3 +34,12 @@ account_how_lon_text = "ile lat będziez trzymał środki\n"
 ask_capitalization_text = "Co jaki okres występuje kapitalizacja?\n Dziennie (d), miesiąc (m), rok (r)\n"
 choose_how_long_text = "Co jaki okres występuje kapitalizacja?\n Dziennie (d), miesiąc (m), rok (r)\n"
 how_much_after_text = "Twój kapitał po wskaznym okresie, wyniesie:"
+
+"""Open account"""
+open_account_text = "Jaki typ konta chcesz otworzyć?\n Rachunek Bierzący (k)\n Konto oszczędnościowe (e)" \
+                    "\n Konto Walutowe (w)\n Powrót do menu (r)\n\n"
+
+"""account_transaction"""
+account_transaction_text = "Jaką operację chcesz wykonać?\nWpłata (+)\nWypłata (-)\nPowrót do menu głównego (r)\n"
+add_transaction_text = "Jaką kwotę chcesz wpłacić na konto?\n"
+withdraw_transaction_text = "Jaką kwotę chcesz wypłacić z konta?\n"

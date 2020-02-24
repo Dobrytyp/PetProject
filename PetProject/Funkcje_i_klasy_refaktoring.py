@@ -1,13 +1,18 @@
 import Opisy
 import sys
-
 from Funkcje import netto_brutto, brutto_netto
+
+"""imie_nazwisko, user, its_open are global"""
+
+its_open = False
+
 
 def user_name():
     global imie_nazwisko
     imie_nazwisko = ''
     while imie_nazwisko == '':
         imie_nazwisko = input(Opisy.name_surname_text)  # user data
+
 
 def petla(password):  # password checksum counter
     total_counter = ""
@@ -68,29 +73,37 @@ def menu(menu_input):
     while menu_input != "e" or menu_input != "o" or menu_input != "r" or menu_input != "s" \
             or menu_input != "d" or menu_input != "a":
         menu_input = input(Opisy.menu_input_text)
-        if menu_input == "a":           # add on menu
+        if menu_input == "a":  # add on menu
             add_on_input = ''
             add_on(add_on_input)
-        elif menu_input == "e":         # exit
+        elif menu_input == "e":  # exit
             print(Opisy.exit_text)
             sys.exit(0)
-        elif menu_input == "r":         # open account
+        elif menu_input == "r":  # open account
             accounts_input = ''
             open_account(accounts_input)
+        elif menu_input == "o":  # Transaction
+            operacje_na_rachunku = ''
+            account_transaction(operacje_na_rachunku)
+        elif menu_input == "s":  # Stan rachunku
+            if not its_open:
+                print("Najpierw musisz mieć towarte konto\n")
+            else:
+                print("Na twoim rachnku znajduje się: ", user.stan_konta(), "złotych")
 
 
 def open_account(accounts_input):
     while accounts_input != 'k' or accounts_input != 'e' or accounts_input != 'w' or accounts_input != 'r':
-        accounts_input = input("Jaki typ konta chcesz otworzyć?\n Rachunek Bierzący (k)\n Konto oszczędnościowe "
-                               "(e)\n Konto Walutowe (w)\n Powrót do menu (r)\n\n")
+        accounts_input = input(Opisy.open_account_text)
         if accounts_input == "r":
             break
         elif accounts_input == "k":
+            global user
             user = Konto(imie_nazwisko, 0, "otwarte")
+            global its_open
             its_open = True
             print(user.description())
             break
-
 
 
 def add_on(add_on_input):
@@ -152,7 +165,31 @@ def interest_rate(rate_interest_start):  # rate interest inputs
         return print(Opisy.how_much_after_text, round(wynik, 2), "\n")
 
 
+def account_transaction(operacje_na_rachunku):
+    while operacje_na_rachunku != "+" or operacje_na_rachunku != "-" or operacje_na_rachunku != "r":
+        operacje_na_rachunku = input(Opisy.account_transaction_text)
+        if not its_open:
+            print("Najpierw musisz mieć otwarte konto")
+            break
+        elif operacje_na_rachunku == "+":
+            add_money = float(input(Opisy.add_transaction_text))
+            user.wplyw(add_money)
+            print(f"Na twoim koncie po operacji znajduje się {user.stan_konta()}\n")
+            break
+        elif operacje_na_rachunku == "-":
+            take_money = float(input(Opisy.withdraw_transaction_text))
+            if user.stan < take_money:
+                print("Za mało dostępnych środków na rachunku\n")
+                break
+            else:
+                user.wyplyw(take_money)
+                print(f"Na twoim koncie po operacji znajduje się {user.stan_konta()}\n\n")
+        elif operacje_na_rachunku == "r":
+            break
+
+
 """Class Acount"""
+
 
 class Konto:
     def __init__(self, imie_nazwisko, stan, status):
