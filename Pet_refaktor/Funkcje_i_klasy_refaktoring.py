@@ -1,7 +1,11 @@
 import Opisy
 import sys
 
-
+def user_name():
+    global imie_nazwisko
+    imie_nazwisko = ''
+    while imie_nazwisko == '':
+        imie_nazwisko = input(Opisy.name_surname_text)  # user data
 
 def petla(password):  # password checksum counter
     total_counter = ""
@@ -79,12 +83,11 @@ def open_account(accounts_input):
                                "(e)\n Konto Walutowe (w)\n Powrót do menu (r)\n\n")
         if accounts_input == "r":
             break
-        # if podaj == "k":
-        #     user = Konto(imie_nazwisko, 0, "otwarte")
-        #     its_open = True
-        #     print(user.description())
-        #     break
-
+        elif accounts_input == "k":
+            user = Konto(imie_nazwisko, 0, "otwarte")
+            its_open = True
+            print(user.description())
+            break
 
 
 def add_on(add_on_input):
@@ -158,6 +161,7 @@ def interest_rate(rate_interest_start):  # rate interest inputs
 
 
 """Class Acount"""
+
 
 class Konto:
     def __init__(self, imie_nazwisko, stan, status):

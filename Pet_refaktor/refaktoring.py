@@ -1,10 +1,8 @@
-from Funkcje_i_klasy_refaktoring import petla, logon, set_password, confirm_password, menu
+from Funkcje_i_klasy_refaktoring import petla, logon, set_password, confirm_password, menu, user_name
 import Opisy
 
 
-imie_nazwisko = ''
-while imie_nazwisko == '':
-    imie_nazwisko = input(Opisy.name_surname_text)          # user data
+user_name()
 
 
 # password = input(Opisy.logon_text)                          # password input

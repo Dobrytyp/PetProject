@@ -3,6 +3,11 @@ import sys
 
 from Funkcje import netto_brutto, brutto_netto
 
+def user_name():
+    global imie_nazwisko
+    imie_nazwisko = ''
+    while imie_nazwisko == '':
+        imie_nazwisko = input(Opisy.name_surname_text)  # user data
 
 def petla(password):  # password checksum counter
     total_counter = ""
@@ -80,11 +85,11 @@ def open_account(accounts_input):
                                "(e)\n Konto Walutowe (w)\n Powrót do menu (r)\n\n")
         if accounts_input == "r":
             break
-        # if accounts_input == "k":
-        #     user = Konto(imie_nazwisko, 0, "otwarte")
-        #     its_open = True
-        #     print(user.description())
-        #     break
+        elif accounts_input == "k":
+            user = Konto(imie_nazwisko, 0, "otwarte")
+            its_open = True
+            print(user.description())
+            break
 
 
 
