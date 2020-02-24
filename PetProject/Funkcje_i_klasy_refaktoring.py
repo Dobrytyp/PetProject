@@ -1,7 +1,8 @@
 import Opisy
 import sys
 
-from Funkcje import netto_brutto, brutto_netto
+
+# from Funkcje import netto_brutto, brutto_netto
 
 
 def petla(password):  # password checksum counter
@@ -63,30 +64,15 @@ def menu(menu_input):
     while menu_input != "e" or menu_input != "o" or menu_input != "r" or menu_input != "s" \
             or menu_input != "d" or menu_input != "a":
         menu_input = input(Opisy.menu_input_text)
-        if menu_input == "a":           # add on menu
+        if menu_input == "a":  # add on menu
             add_on_input = ''
             add_on(add_on_input)
-        elif menu_input == "e":         # exit
+        elif menu_input == "e":  # exit
             print(Opisy.exit_text)
             sys.exit(0)
-        elif menu_input == "r":         # open account
+        elif menu_input == "r":  # open account
             accounts_input = ''
             open_account(accounts_input)
-
-
-def open_account(accounts_input):
-    while accounts_input != 'k' or accounts_input != 'e' or accounts_input != 'w' or accounts_input != 'r':
-        accounts_input = input("Jaki typ konta chcesz otworzyć?\n Rachunek Bierzący (k)\n Konto oszczędnościowe "
-                               "(e)\n Konto Walutowe (w)\n Powrót do menu (r)\n\n")
-        if accounts_input == "r":
-            break
-        # if podaj == "k":
-        #     user = Konto(imie_nazwisko, 0, "otwarte")
-        #     its_open = True
-        #     print(user.description())
-        #     break
-        # elif podaj == "r":
-        #     break
 
 
 def add_on(add_on_input):
@@ -105,11 +91,28 @@ def add_on(add_on_input):
             interest_rate(rate_interest_start)
 
 
-def brutto_netto_calc(ask_brutto_netto):
+def open_account(accounts_input):
+    while accounts_input != 'k' or accounts_input != 'e' or accounts_input != 'w' or accounts_input != 'r':
+        accounts_input = input("Jaki typ konta chcesz otworzyć?\n Rachunek Bierzący (k)\n Konto oszczędnościowe "
+                               "(e)\n Konto Walutowe (w)\n Powrót do menu (r)\n\n")
+        if accounts_input == "r":
+            break
+        if accounts_input == "k":
+            print("dupa")
+        #     user = Konto(imie_nazwisko, 0, "otwarte")
+        #     its_open = True
+        #     print(user.description())
+        #     break
+        # elif podaj == "r":
+        #     break
+
+
+"""Brutto-Netto Calc"""
+
+
+def brutto_netto_calc(ask_brutto_netto):  # TU JEST BlĄD NIE WRACA DO GLÓWNEGO MENU
     while ask_brutto_netto != "b" or ask_brutto_netto != "n" or ask_brutto_netto != "e" or ask_brutto_netto != "r":
         ask_brutto_netto = input(Opisy.brutto_netto_calc_text)
-        if ask_brutto_netto == "r":
-            break
         kwota = float(input(Opisy.salary_text))
         if ask_brutto_netto == "b":
             netto_brutto(kwota)
@@ -118,6 +121,21 @@ def brutto_netto_calc(ask_brutto_netto):
         elif ask_brutto_netto == "e":
             print(Opisy.exit_text)
             sys.exit(0)
+        elif ask_brutto_netto == "r":
+            break
+
+
+def netto_brutto(kwota):
+    wynagrodzenie = kwota * 140.26 / 100
+    return print("Twoja kwota brutto to:", round(wynagrodzenie, 2), "\n")
+
+
+def brutto_netto(kwota):
+    wynagrodzenie = kwota * 71.3 / 100
+    return print("Twoja kwota netto to:", round(wynagrodzenie, 2), "\n")
+
+
+"""Interest rate Calc"""
 
 
 def interest_rate(rate_interest_start):  # rate interest inputs
@@ -146,3 +164,32 @@ def interest_rate(rate_interest_start):  # rate interest inputs
     elif pytanie == "d":
         wynik = stan_p * ((1 + (procent_d / 100)) ** dzień)
         return print(Opisy.how_much_after_text, round(wynik, 2), "\n")
+
+
+"""Account Class"""
+
+
+class Konto:
+    def __init__(self, imie_nazwisko, stan, status):
+        self.imie_nazwisko = imie_nazwisko
+        self.stan = stan
+        self.status = status
+
+    def description(self):
+        return f"Witaj {self.imie_nazwisko}. Twoje konto jest {self.status} znajduje się na nim {self.stan} złotych"
+
+    def stan_konta(self):
+        return self.stan
+
+    def wplyw(self, wplyw):
+        self.stan += wplyw
+
+    def wyplyw(self, wyplyw):
+        self.stan -= wyplyw
+
+    def zamknij_konto(self, status):
+        self.status = status
+        return self.status == "Zamkniętę"
+
+    def stats(self):
+        return self.imie_nazwisko, self.stan, self.status
