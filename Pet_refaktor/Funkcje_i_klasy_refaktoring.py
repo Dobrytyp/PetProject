@@ -1,7 +1,6 @@
 import Opisy
 import sys
 
-from Funkcje import netto_brutto, brutto_netto
 
 
 def petla(password):  # password checksum counter
@@ -80,7 +79,7 @@ def open_account(accounts_input):
                                "(e)\n Konto Walutowe (w)\n Powrót do menu (r)\n\n")
         if accounts_input == "r":
             break
-        # if accounts_input == "k":
+        # if podaj == "k":
         #     user = Konto(imie_nazwisko, 0, "otwarte")
         #     its_open = True
         #     print(user.description())
@@ -117,6 +116,17 @@ def brutto_netto_calc(ask_brutto_netto):
         elif ask_brutto_netto == "e":
             print(Opisy.exit_text)
             sys.exit(0)
+
+
+def netto_brutto(kwota):
+    wynagrodzenie = kwota * 140.26 / 100
+    return print("Twoja kwota brutto to:", round(wynagrodzenie, 2), "\n")
+
+
+def brutto_netto(kwota):
+    wynagrodzenie = kwota * 71.3 / 100
+    return print("Twoja kwota netto to:", round(wynagrodzenie, 2), "\n")
+
 
 
 def interest_rate(rate_interest_start):  # rate interest inputs
