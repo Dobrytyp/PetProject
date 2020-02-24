@@ -23,11 +23,11 @@ def petla(password):  # password checksum counter
 
 
 def set_password(password, total_counter):  # checksum password control
-    if password == "e":
-        print(Opisy.exit_text)
-        sys.exit(0)
     while "l" not in total_counter or "u" not in total_counter or "d" not in total_counter \
             or "s" not in total_counter or len(password) > 12 or len(password) < 6:
+        if password == "e":
+            print(Opisy.exit_text)
+            sys.exit(0)
         print(Opisy.bad_type_password)
         password = input(Opisy.ask_password_again_text)
         petla(password)
@@ -63,21 +63,23 @@ def menu(menu_input):
     while menu_input != "e" or menu_input != "o" or menu_input != "r" or menu_input != "s" \
             or menu_input != "d" or menu_input != "a":
         menu_input = input(Opisy.menu_input_text)
-        if menu_input == "a":  # add on menu
+        if menu_input == "a":           # add on menu
             add_on_input = ''
             add_on(add_on_input)
-        elif menu_input == "e":  # exit
+        elif menu_input == "e":         # exit
             print(Opisy.exit_text)
             sys.exit(0)
-        elif menu_input == "r":  # add on menu
+        elif menu_input == "r":         # open account
             accounts_input = ''
             open_account(accounts_input)
 
 
 def open_account(accounts_input):
     while accounts_input != 'k' or accounts_input != 'e' or accounts_input != 'w' or accounts_input != 'r':
-        podaj = input("Jaki typ konta chcesz otworzyć?\n Rachunek Bierzący (k)\n Konto oszczędnościowe "
-                      "(e)\n Konto Walutowe (w)\n Powrót do menu (r)\n\n")
+        accounts_input = input("Jaki typ konta chcesz otworzyć?\n Rachunek Bierzący (k)\n Konto oszczędnościowe "
+                               "(e)\n Konto Walutowe (w)\n Powrót do menu (r)\n\n")
+        if accounts_input == "r":
+            break
         # if podaj == "k":
         #     user = Konto(imie_nazwisko, 0, "otwarte")
         #     its_open = True

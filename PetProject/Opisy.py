@@ -16,17 +16,17 @@ bad_password = "Podałeś błedne hasło"
 
 """Menu"""
 menu_input_text = "MENU GŁÓWNE\nZ jakiej funkcji chcesz skorzystać?\nMenu dodatków: (a)\nOferta kont (r)" \
-                  "\nWyjście z systemu bankowości: (e)\nOperacje na rachunku: (o)\nStan rachunku (s)\nZałóż Depozyt (d)\n"
-
+                  "\nWyjście z systemu bankowości: (e)\nOperacje na rachunku: (o)\nStan rachunku (s)\nZałóż Depozyt (" \
+                  "d)\n "
 add_on_text = "Z jakiej funkcji chcesz skorzystać?\nKalkulator oprocentowania: (k)\nKalkulator Brutto - Netto (b)" \
               "\nPowrót do menu głównego: (r)\nWyjście z systemu bankowości: (e)\n"
 
 """Brutto-Netto"""
 brutto_netto_calc_text = "KALKULATOR BRUTTO-NETTO\nCo chcesz obliczyć?\nBrutto (b)\nnetto (n)\n" \
                          "Powrót do menu (r)\nZakończ menu_input (e)\n"
-
 salary_text = "Podaj wysokść wynagrodzenia\n"
 
+"""interest calc"""
 interest_calc_text = "Kalkulator Oprocentowania"
 account_1_text = "podaj stan poczatkowy konta\n"
 account_2_text = "podaj oprocentowanie\n"
