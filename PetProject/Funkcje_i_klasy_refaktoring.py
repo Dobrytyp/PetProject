@@ -128,7 +128,7 @@ def brutto_netto_calc(ask_brutto_netto):
         if ask_brutto_netto == "r":                 # return to menu
             break
         kwota = float(input(Opisy.salary_text))
-        elif ask_brutto_netto == "b":               # netto to brutto
+        if ask_brutto_netto == "b":               # netto to brutto
             netto_brutto(kwota)
         elif ask_brutto_netto == "n":               # brutto to netto
             brutto_netto(kwota)
