@@ -1,6 +1,7 @@
 from Funkcje_i_klasy_refaktoring import petla, logon, set_password, confirm_password, menu, user_name
 import Opisy
 
+"""main interface"""
 
 user_name()
 
