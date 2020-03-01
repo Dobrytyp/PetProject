@@ -9,6 +9,8 @@ from Funkcje import netto_brutto, brutto_netto
 its_open = False    # ist_open - checking if account is open
 depo_open = False   # checking if deposit is open
 
+deposits = []
+
 
 def user_name():  # User Name and surname
     global imie_nazwisko
@@ -161,6 +163,7 @@ def create_deposit(deposit_input):
                 depo_open = True
                 global user_depo
                 user_depo = Lokata(imie_nazwisko, kwota_lokaty, "otwarte", 1, 1.5, )
+                deposits.append(Lokata(imie_nazwisko, kwota_lokaty, "otwarte", 1, 1.5, ))
                 print(user_depo.description())
                 user.wyplyw(kwota_lokaty)
                 print(f"Po założeniu lokaty na rachnku zostało ci {user.stan} złotych\n\n")
