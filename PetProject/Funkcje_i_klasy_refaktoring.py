@@ -1,6 +1,6 @@
 import Opisy
 import sys
-from Funkcje import netto_brutto, brutto_netto
+
 
 """imie_nazwisko, user, its_open, depo_open are global"""
 # imie_naziwsko - Name and surname
@@ -184,6 +184,16 @@ def add_on(add_on_input):
         elif add_on_input == "k":  # rate interest calculator
             rate_interest_start = 0
             interest_rate(rate_interest_start)
+
+
+def netto_brutto(kwota):
+    wynagrodzenie = kwota * 140.26 / 100
+    return print("Twoja kwota brutto to:", round(wynagrodzenie, 2), "\n")
+
+
+def brutto_netto(kwota):
+    wynagrodzenie = kwota * 71.3 / 100
+    return print("Twoja kwota netto to:", round(wynagrodzenie, 2), "\n")
 
 
 def brutto_netto_calc(ask_brutto_netto):
