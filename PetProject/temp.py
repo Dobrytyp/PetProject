@@ -81,31 +81,4 @@
 # print("siema")
 
 
-a = "In the hole in the ground there lived a hobbit"
-counter = -1
-h_list = []
-
-for i in a:
-    counter += 1
-    if i == "h":
-        h_list.append(counter)
-
-first = h_list[0]
-last = h_list[-1]
-
-
-# print(h_list)
-
-start = a[:first+1]
-middle = a[first+1:last-1]
-ends = a[last:]
-
-# print(start)
-# print(middle)
-# print(ends)
-
-middle2 = middle.replace("h", "H")
-
-
-# print(middle2)
-print(start,middle2,ends)
+import pandas

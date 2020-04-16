@@ -1,15 +1,15 @@
 import Opisy
 import sys
 
-
 """imie_nazwisko, user, its_open, depo_open are global"""
 # imie_naziwsko - Name and surname
 # user - specific name for class account
 
-its_open = False    # ist_open - checking if account is open
-depo_open = False   # checking if deposit is open
+its_open = False  # ist_open - checking if account is open
+depo_open = False  # checking if deposit is open
 
-deposits = []
+empty_depo_list = ["user_depo1", "user_depo2", "user_depo3", "user_depo4", "user_depo4","user_depo5"]  # predifined names for deposits
+depo_list = []  # list od deposits
 
 
 def user_name():  # User Name and surname
@@ -96,9 +96,12 @@ def menu(menu_input):  # main menu
             else:
                 if not depo_open:
                     print("Na twoim rachnku znajduje się: ", user.stan_konta(), "złotych")
+
                 else:
                     print("Na twoim rachnku znajduje się: ", user.stan_konta(), "złotych")
-                    print("Na twojej lokacie znajduje się: ", user_depo.stan_lokaty()), "złotych"
+                    for i in depo_list:
+                        print(i.description())
+
         elif menu_input == "d":
             if not its_open:
                 print("Najpierw musisz mieć otwarte konto\n")
@@ -162,9 +165,10 @@ def create_deposit(deposit_input):
                 global depo_open
                 depo_open = True
                 global user_depo
-                user_depo = Lokata(imie_nazwisko, kwota_lokaty, "otwarte", 1, 1.5, )
-                deposits.append(Lokata(imie_nazwisko, kwota_lokaty, "otwarte", 1, 1.5, ))
-                print(user_depo.description())
+
+                empty_depo_list[0] = Lokata(imie_nazwisko, kwota_lokaty, "otwarta", 1, 1.5, )
+                depo_list.append(empty_depo_list[0])
+                empty_depo_list.remove(empty_depo_list[0])
                 user.wyplyw(kwota_lokaty)
                 print(f"Po założeniu lokaty na rachnku zostało ci {user.stan} złotych\n\n")
                 break
@@ -280,7 +284,7 @@ class Lokata:
         self.procent = procent
 
     def description(self):
-        return f"Witaj {self.imie_nazwisko}. Twoja lokata jest {self.status} znajduje się na niej {self.stan} złotych \nBędzie trwała {self.okres} miesiąc. \nOprocentowanie wynosi {self.procent}%\n"
+        return f"Witaj {self.imie_nazwisko}. Twoja lokata jest {self.status} znajduje się na niej {self.stan} złotych \nBędzie trwała {self.okres} miesiąc/miesiące. \nOprocentowanie wynosi {self.procent}%\n"
 
     def open_depo(self, stan, okres, procent):
         self.stan = stan
